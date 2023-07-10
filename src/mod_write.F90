@@ -159,7 +159,13 @@ MODULE mod_write
 
               IF (l_subdom) THEN
                   xw = xw + imindom - 1;
-                  yw = yw + jmindom - 1;
+
+                  ! Correct yw according to the y-orientation
+                  IF (griddir(2) == 1) THEN 
+                      yw = yw + jmindom - 1;
+                  ELIF (griddir(2) == -1) THEN 
+                      yw = yw - jmindom + 1;
+                  END IF
 
                   IF ( (imindom > imaxdom) .AND. xw >imtdom )  xw = xw - imtdom
               END IF
@@ -235,7 +241,13 @@ MODULE mod_write
 
                   IF (l_subdom) THEN
                       xw = xw + imindom - 1;
-                      yw = yw + jmindom - 1;
+
+                      ! Correct yw according to the y-orientation
+                      IF (griddir(2) == 1) THEN 
+                          yw = yw + jmindom - 1;
+                      ELIF (griddir(2) == -1) THEN 
+                          yw = yw - jmindom + 1;
+                      END IF
 
                       IF ( (imindom > imaxdom) .AND. xw > imtdom )  xw = xw - imtdom
                   END IF
@@ -316,7 +328,13 @@ MODULE mod_write
 
               IF (l_subdom) THEN
                   xw = xw + imindom - 1;
-                  yw = yw + jmindom - 1;
+
+                  ! Correct yw according to the y-orientation
+                  IF (griddir(2) == 1) THEN 
+                      yw = yw + jmindom - 1;
+                  ELIF (griddir(2) == -1) THEN 
+                      yw = yw - jmindom + 1;
+                  END IF
 
                   IF ( (imindom > imaxdom) .AND. xw > imtdom )  xw = xw - imtdom
               END IF
